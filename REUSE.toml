@@ -35,3 +35,11 @@ path = "repository.json"
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2026 Andrew Grimberg <tykeal@bardicgrove.org>"
 SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = [
+    "rentalsync-bridge/icon.png",
+    "rentalsync-bridge/logo.png"
+]
+SPDX-License-Identifier = "Apache-2.0"
+SPDX-FileCopyrightText = "2026 Andrew Grimberg <tykeal@bardicgrove.org>"
