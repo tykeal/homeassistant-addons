@@ -1,0 +1,36 @@
+# SPDX-FileCopyrightText: 2026 Andrew Grimberg <tykeal@bardicgrove.org>
+# SPDX-License-Identifier: Apache-2.0
+---
+name: Captive Portal Guest Access
+version: "0.0.0"
+slug: captive_portal_guest_access
+description: >-
+  Guest network captive portal integrating TP-Omada and Home Assistant
+url: https://github.com/tykeal/homeassistant-captive-portal
+image: ghcr.io/tykeal/captive-portal-{arch}
+arch:
+  - amd64
+  - aarch64
+startup: services
+init: false
+panel_admin: true
+panel_icon: mdi:wifi-lock
+panel_title: Captive Portal
+homeassistant_api: true
+ingress: true
+ingress_port: 8080
+ingress_stream: false
+auth_api: true
+ports:
+  "8080/tcp": null
+  "8099/tcp": 8099
+ports_description:
+  "8080/tcp": Web interface (not needed with Ingress)
+  "8099/tcp": Guest captive portal (configure WiFi controller to redirect here)
+schema:
+  log_level: "list(trace|debug|info|notice|warning|error|fatal)?"
+  session_idle_timeout: "int(1,)?"
+  session_max_duration: "int(1,)?"
+  guest_external_url: "url?"
+  ha_base_url: "url?"
+  ha_token: "str?"
