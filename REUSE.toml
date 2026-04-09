@@ -38,6 +38,8 @@ SPDX-License-Identifier = "Apache-2.0"
 
 [[annotations]]
 path = [
+    "captive-portal/icon.png",
+    "captive-portal/logo.png",
     "rentalsync-bridge/icon.png",
     "rentalsync-bridge/logo.png"
 ]
