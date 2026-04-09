@@ -1,0 +1,97 @@
+# SPDX-FileCopyrightText: 2021 Andrew Grimberg <tykeal@bardicgrove.org>
+# SPDX-License-Identifier: Apache-2.0
+
+---
+ci:
+  autofix_commit_msg: |
+    Chore: pre-commit autofixes
+
+    Signed-off-by: pre-commit-ci[bot] <66853113+pre-commit-ci[bot]@users.noreply.github.com>
+  autofix_prs: false
+  autoupdate_commit_msg: |
+    Chore: pre-commit autoupdate
+
+    Signed-off-by: pre-commit-ci[bot] <66853113+pre-commit-ci[bot]@users.noreply.github.com>
+  # pre-commit.ci runs Python 3.12 which cannot parse Python 3.14
+  # syntax (PEP 758 unparenthesized except) emitted by ruff format
+  # targeting py314. These hooks still run locally and in GitHub
+  # Actions on Python 3.14.
+  skip:
+    - ruff-format
+    - interrogate
+    - mypy
+
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: 3e8a8703264a2f4a69428a0aa4dcb512790b2c8c  # frozen: v6.0.0
+    hooks:
+      - id: check-added-large-files
+        args: ['--maxkb=2000', '--enforce-all']
+        exclude: '^uv\.lock$'
+      - id: check-ast
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-xml
+      - id: check-yaml
+      - id: debug-statements
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+        args: ["--fix=lf"]
+      - id: no-commit-to-branch
+        args:
+          - --branch=main
+      - id: requirements-txt-fixer
+      - id: trailing-whitespace
+
+  - repo: https://github.com/jorisroovers/gitlint
+    rev: acc9d9de6369b76d22cb4167029d2035e8730b98 # frozen: v0.19.1
+    hooks:
+      - id: gitlint
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: b831c3dc5d27d9da294ae4e915773b99aa24a7c5  # frozen: v0.15.10
+    hooks:
+      - id: ruff
+        files: ^(scripts|tests|custom_components)/.+\.py$
+        args: [--fix, --exit-non-zero-on-fix]
+      - id: ruff-format
+        files: ^(scripts|tests|custom_components)/.+\.py$
+
+  - repo: https://github.com/adrienverge/yamllint.git
+    rev: cba56bcde1fdd01c1deb3f945e69764c291a6530  # frozen: v1.38.0
+    hooks:
+      - id: yamllint
+
+  - repo: https://github.com/econchick/interrogate
+    rev: 4894019dc8876092bc9b6d56878798c550fad998  # frozen: 1.7.0
+    hooks:
+      - id: interrogate
+        args: [-vv, --fail-under=100]
+        additional_dependencies:
+          - setuptools
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: 8e5c80792e2ec0c87804d8ef915bf35e2caea6da  # frozen: v1.20.0
+    hooks:
+      - id: mypy
+        additional_dependencies:
+          - types-pytz
+
+  - repo: https://github.com/fsfe/reuse-tool
+    rev: a1bb792acda6fd0724936b4ebbdbc8eceb9c0459  # frozen: v6.2.0
+    hooks:
+      - id: reuse
+
+  - repo: https://github.com/rhysd/actionlint
+    rev: 914e7df21a07ef503a81201c76d2b11c789d3fca  # frozen: v1.7.12
+    hooks:
+      - id: actionlint
+
+  - repo: https://github.com/btford/write-good
+    rev: f4bd563644dd2c201cedd86c2670305686c16450  # frozen: v1.0.8
+    hooks:
+      - id: write-good
+        files: "\\.(rst|md|markdown|mdown|mkdn)$"
+        exclude: "^\\.specify/|^specs/|^\\.github/|^code-reviews/|^info\\.md$|^AGENTS\\.md$|^UV_USAGE\\.md$"
+        args: [--no-adverb]
