@@ -64,7 +64,7 @@ repos:
       - id: yamllint
 
   - repo: https://github.com/econchick/interrogate
-    rev: 4894019dc8876092bc9b6d56878798c550fad998  # frozen: 1.7.0
+    rev: a6268877efd41a21197445cc04cbf28f9c6facba  # frozen: 1.7.0
     hooks:
       - id: interrogate
         args: [-vv, --fail-under=100]
@@ -72,14 +72,14 @@ repos:
           - setuptools
 
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: 8e5c80792e2ec0c87804d8ef915bf35e2caea6da  # frozen: v1.20.0
+    rev: 0f369d245750787ce34997d464ed9605391a5283  # frozen: v1.20.1
     hooks:
       - id: mypy
         additional_dependencies:
           - types-pytz
 
   - repo: https://github.com/fsfe/reuse-tool
-    rev: a1bb792acda6fd0724936b4ebbdbc8eceb9c0459  # frozen: v6.2.0
+    rev: 9fabf9eb815a57aac116b435e8346c200cdb8604  # frozen: v6.2.0
     hooks:
       - id: reuse
 
@@ -89,7 +89,7 @@ repos:
       - id: actionlint
 
   - repo: https://github.com/btford/write-good
-    rev: f4bd563644dd2c201cedd86c2670305686c16450  # frozen: v1.0.8
+    rev: ab66ce10136dfad5146e69e70f82a3efac8842c1  # frozen: v1.0.8
     hooks:
       - id: write-good
         files: "\\.(rst|md|markdown|mdown|mkdn)$"
