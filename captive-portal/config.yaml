@@ -7,7 +7,7 @@ slug: captive_portal_guest_access
 description: >-
   Guest network captive portal integrating TP-Omada and Home Assistant
 url: https://github.com/tykeal/homeassistant-captive-portal
-image: ghcr.io/tykeal/captive-portal-{arch}
+image: ghcr.io/tykeal/{arch}-homeassistant-captive-portal
 arch:
   - amd64
   - aarch64
@@ -34,3 +34,10 @@ schema:
   guest_external_url: "url?"
   ha_base_url: "url?"
   ha_token: "str?"
+  omada_controller_url: "url?"
+  omada_username: "str?"
+  omada_password: "password?"
+  omada_site_name: "str?"
+  omada_controller_id: "str?"
+  omada_verify_ssl: "bool?"
+  debug_guest_portal: "bool?"
