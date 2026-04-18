@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 ---
 name: RentalSync Bridge
-version: "0.2.0"
+version: "0.3.0"
 slug: rentalsync_bridge
 description: Multi-PMS iCal export bridge
 url: https://github.com/tykeal/homeassistant-rentalsync-bridge
